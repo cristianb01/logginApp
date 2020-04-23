@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
   user: UserModel;
+  rememberUser: boolean = false;
 
 
 
@@ -40,6 +41,10 @@ export class RegistroComponent implements OnInit {
 
           console.log(resp);
           Swal.close();
+
+          if(this.rememberUser) {
+            localStorage.setItem('email', this.user.email);
+          }
 
           Swal.fire({
             icon: 'success',
